@@ -1,0 +1,58 @@
+<!--　動画一覧　-->
+
+{% extends "layout.html" %}
+
+{% block title %}動画一覧{% endblock %}
+
+{% block content %}
+<h2>About</h2>
+<p>このサイトは、ニコニコ動画(Re:仮)の動画を非公式にリストアップするサイトです。</p>
+<p>
+    開発者：うぃすたりあ<br>
+    <a href="https://www.wisteriatp.work" target="_blank" rel="noopener noreferrer">ご連絡はこちらから<i class="material-icons"
+            style="vertical-align: middle;">open_in_new</i></a>
+</p>
+<p>
+    <a href="https://x.com/nao_1888" target="_blank" rel="noopener noreferrer">Nao_188</a>様の
+    <a href="https://docs.google.com/spreadsheets/d/1RxhmfpYHw09WKdp8hNXPSMalX7APQOLnL0cP9Edry2g/edit?usp=sharing"
+        target="_blank" rel="noopener noreferrer">スプレッドシート</a>を基に開発しました。ありがとうございます。
+</p>
+
+<h2>機能</h2>
+<ul>
+    <li><a href="{{ url_for('index') }}">動画の一覧表示</a></li>
+    <ul>
+        <li>タイトル</li>
+        <li>🚧サムネイル</li>
+        <li>リンク</li>
+        <li>🚧投稿日時</li>
+    </ul>
+    <li><a href="{{ url_for('search') }}">🚧動画の検索</a></li>
+    <li><a href="{{ url_for('post') }}">動画情報の投稿</a></li>
+    <li>共有</li>
+    <ul>
+        <li>Twitterで共有</li>
+        <li>🚧リンクをコピー</li>
+        <li>OGPに対応</li>
+    </ul>
+</ul>
+<p>デザイン等は順次整えていきます。ご要望は開発者まで！</p>
+
+<h2>動画一覧</h2>
+<div class="row">
+    {% for video in videos %}
+    <div class="col s12 m6 l4">
+        <div class="card">
+            <div class="card-content" style="aspect-ratio: 16/9; overflow: hidden;">
+                <span class="card-title">{{ video['タイトル'] }}</span>
+            </div>
+            <div class="card-action">
+                <a href="{{ url_for('watch', id = video['ID']) }}">動画を見る</a>
+                <a href="https://twitter.com/share?url={{ url_for('watch', id = video['ID'], _external=True) }}&text={{ video['タイトル'] }}｜ニコニコ動画(Re:仮)"
+                    target="_blank" rel="noopener noreferrer">Twitterで共有</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

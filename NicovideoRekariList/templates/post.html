@@ -1,0 +1,38 @@
+{% extends 'layout.html' %}
+
+{% block title %}動画情報の投稿{% endblock %}
+
+{% block content %}
+<h2>動画情報の投稿</h2>
+
+<p>
+    動画情報の修正は
+    <a href="https://docs.google.com/spreadsheets/d/1IIXr6q8NEUQJfAR7uvQj9YADcIfSIJoGsjdbNK0gvCM/">こちらのスプレッドシート</a>
+    にコメントをお願いします。
+</p>
+
+{% if msg %}
+<p>{{ msg }}</p>
+<script>
+    window.onload = function() {
+        alert('{{ msg }}');
+    }
+</script>
+{% endif %}
+
+<form action="{{ url_for('post') }}" method="post">
+    <div class="input-field">
+        <input type="text" name="id" id="id" required>
+        <label for="id">動画ID</label>
+    </div>
+    <div class="input-field">
+        <input type="text" name="title" id="title" required>
+        <label for="title">タイトル</label>
+    </div>
+    <div class="input-field">
+        <input type="date" name="date" id="date" required>
+        <label for="date">生存確認日</label>
+    </div>
+    <button class="btn waves-effect waves-light" type="submit">投稿</button>
+</form>
+{% endblock %}

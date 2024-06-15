@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+
+{% block title %}{{ video['タイトル'] }}{% endblock %}
+
+{% block head %}
+<meta name="description" content="{{ video['タイトル'] }}">
+<meta property="og:url" content="{{ url_for('watch', id=video['ID'], _external=True) }}" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="{{ video['タイトル'] }}" />
+<meta property="og:image" content="{{ url_for('thumbnail', id=video['ID'], _external=True) }}" />
+
+<meta http-equiv="refresh" content="0;URL={{ url }}" />
+{% endblock %}
+
+{% block content %}
+<h2>{{ video['タイトル'] }}</h2>
+<p>まもなくリダイレクトします。</p>
+<p>しばらく経ってもリダイレクトしない場合は<a href="{{ url }}">こちら</a>をクリックしてください。</p>
+{% endblock %}
