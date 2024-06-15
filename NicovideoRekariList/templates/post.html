@@ -2,6 +2,15 @@
 
 {% block title %}動画情報の投稿{% endblock %}
 
+{% block head %}
+<meta property="og:title" content="動画情報の投稿｜ニコニコ動画(Re:仮)" />
+<meta property="og:description" content="ニコニコ動画(Re:仮)の動画を非公式にリストアップするサイト" />
+<meta property="og:url" content="{{ url_for('post', _external=True) }}" />
+<meta property="og:image" content="{{ url_for('static', filename='ogp.png', _external=True) }}" />
+<meta property="og:type" content="website" />
+<meta property="twitter:card" content="summary_large_image" />
+{% endblock %}
+
 {% block content %}
 <h2>動画情報の投稿</h2>
 
