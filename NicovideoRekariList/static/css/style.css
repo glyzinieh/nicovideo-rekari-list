@@ -3,14 +3,14 @@ nav {
 }
 
 nav a {
-    color: var(--md-sys-color-on-background);
+    color: #ffffff;
 
 }
 
 nav .brand-logo {
-    color: var(--md-sys-color-on-background);
+    color: #ffffff;
 }
 
 nav ul:not(.dropdown-content)>li>a {
-    color: var(--md-sys-color-on-background);
+    color: #ffffff;
 }
