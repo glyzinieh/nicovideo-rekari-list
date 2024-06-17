@@ -34,7 +34,7 @@ YEAR = setting_worksheet.acell("B1").value
 
 
 def get_rekari_list():
-    videos = [i for i in list_worksheet.get_all_values_to_dicts() if i("年") == YEAR]
+    videos = [i for i in list_worksheet.get_all_values_to_dicts() if i["年"] == YEAR]
     return videos
 
 
@@ -49,5 +49,5 @@ def get_video_info(id):
 
 
 def record_post(id, title):
-    list_worksheet.append_row([id, title, YEAR])
+    list_worksheet.append_row([id, title, "", "", "", "", "", "", "", YEAR])
     return True
