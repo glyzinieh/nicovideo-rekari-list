@@ -38,15 +38,12 @@ def create_app():
                 id = request.form["id"]
                 title = request.form["title"]
 
-                date_data = request.form["date"].split("-")
-                date = "".join(date_data[1:])
-
-                if not id or not title or not date:
-                    msg = "ID、タイトル、日付は必須です"
+                if not id or not title:
+                    msg = "ID、タイトルは必須です"
                 elif id in get_id_list():
                     msg = "この動画はすでに登録されています"
                 else:
-                    record_post(id, title, date)
+                    record_post(id, title)
                     msg = "登録が完了しました"
 
                 return render_template("post.html", msg=msg)
