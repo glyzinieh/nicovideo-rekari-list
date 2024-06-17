@@ -30,16 +30,11 @@ spreadsheet = gc.open_by_url(
 setting_worksheet = spreadsheet.worksheet("設定")
 list_worksheet = spreadsheet.worksheet("動画一覧")
 
-start_date = int(setting_worksheet.acell("B2").value)
-end_date = int(setting_worksheet.acell("B3").value)
+YEAR = setting_worksheet.acell("B1").value
 
 
 def get_rekari_list():
-    videos = [
-        i
-        for i in list_worksheet.get_all_values_to_dicts()
-        if start_date <= int(i["日付"]) and int(i["日付"]) <= end_date
-    ]
+    videos = [i for i in list_worksheet.get_all_values_to_dicts() if i("年") == YEAR]
     return videos
 
 
@@ -53,6 +48,6 @@ def get_video_info(id):
     return video[0] if video else None
 
 
-def record_post(id, title, date):
-    list_worksheet.append_row([id, title, date])
+def record_post(id, title):
+    list_worksheet.append_row([id, title, YEAR])
     return True
